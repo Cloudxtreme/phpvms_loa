@@ -88,8 +88,8 @@ class LoA extends CodonModule {
           $message_admin = "Dear admin, a user has sent a LoA Requst. Check the details below. To edit the LoA request, go to your admin panel. <br>
           Here are the details of your request: <br>
           Pilot ID: {$data['pilotid']} <br>
-          Start Date: {$data['start']} <br>
-          End Date: {$data['end']} <br>
+          Start Date: ".date( DATE_FORMAT, $data['start'])."<br />
+          End Date: ".date(DATE_FORMAT,$data['end'])." <br />
           Reason: {$data['reason']}<br>
           Thank you for submitting the request.";
           Util::SendEmail($email_admin, $subject_admin, $message_admin);
@@ -100,8 +100,8 @@ class LoA extends CodonModule {
           $message = "Your leave of absence request has been submitted and processed by our system. <br>
           Here are the details of your request: <br>
           Pilot ID: {$data['pilotid']} <br>
-          Start Date: {$data['start']} <br>
-          End Date: {$data['end']} <br>
+          Start Date: ".date( DATE_FORMAT, $data['start'])."<br />
+          End Date: ".date(DATE_FORMAT,$data['end'])." <br />
           Reason: {$data['reason']}<br>
           Thank you for submitting the request.";
           Util::SendEmail($email, $subject, $message);
