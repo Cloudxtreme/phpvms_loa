@@ -8,9 +8,9 @@
 * You are free to redistribute and alter this work as you wish but you must keep the original 'copyright' information on all the places it comes in the original work.
 * You are not allowed to delete the copyright information and/or gain any profit by adopting or using this module.
 *
-* @author Sava Markovic - airserbiavirtual.com
-* @copyright Copyright (c) 2012, Sava Markovic
-* @link http://www.airserbiavirtual.com
+* @author Sava Markovic - savamarkovic.com
+* @copyright Copyright (c) 2013, Sava Markovic
+* @link http://www.savamarkovic.com
 * @license http://creativecommons.org/licenses/by-nc-sa/3.0/
 */
 
