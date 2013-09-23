@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Leave of Absence (LoA) v.0.9 Module
  * 
@@ -17,67 +16,48 @@
 
 class LoAData extends CodonData {
 
-	public function CheckPilotID ($pilotid)
-	{
+        public function CheckPilotID ($pilotid) {
 		$pilotid=DB::escape($pilotid);
-		$query = "SELECT * FROM loa WHERE pilotid ='$pilotid'";
+		$query = "SELECT * FROM ".TABLE_PREFIX."loa WHERE pilotid ='$pilotid'";
 		$sql = mysql_query($query);
 		$count = mysql_num_rows($sql); 
-		return $count; 
-
+		return $count;
 	}
-	public function AddLoa ($data)
-	{
+        
+	public function AddLoa ($data)  {
 		$pilotid = DB::escape($data['pilotid']);
  		$start   = DB::escape($data['start']);
  		$end     = DB::escape($data['end']);
  		$reason  = DB::escape($data['reason']);
- 		$sql = "INSERT INTO loa (pilotid,start, end, reason) VALUES ('$pilotid', '$start', '$end', '$reason')";
+ 		$sql = "INSERT INTO ".TABLE_PREFIX."loa (pilotid,start, end, reason) VALUES ('$pilotid', '$start', '$end', '$reason')";
  		$insert = DB::query($sql);
-	
-
 	}
 
-	public function GetAllRequests ()
-	{
-		$table = TABLE_PREFIX;
-		$sql   = "SELECT loa.pilotid,
-						 loa.start,
-						 loa.end,
-						 loa.reason,
-						 phpvms_pilots.pilotid,
-						 phpvms_pilots.firstname,
-						 phpvms_pilots.lastname
-						 FROM loa 
-						 JOIN phpvms_pilots ON loa.pilotid = phpvms_pilots.pilotid";
+	public function GetAllRequests ()   {
+		$sql   = "SELECT ".TABLE_PREFIX."loa.pilotid,
+                                ".TABLE_PREFIX."loa.start,
+                                ".TABLE_PREFIX."loa.end,
+                                ".TABLE_PREFIX."loa.reason,
+                                ".TABLE_PREFIX."pilots.pilotid,
+                                ".TABLE_PREFIX."pilots.firstname,
+                                ".TABLE_PREFIX."pilots.lastname
+                                FROM ".TABLE_PREFIX."loa 
+                                JOIN ".TABLE_PREFIX."pilots ON ".TABLE_PREFIX."loa.pilotid = ".TABLE_PREFIX."pilots.pilotid";
 		$ret = DB::get_results($sql);
 		return $ret;
-		
-
 	}
 	
-	public function GetInfoByID($id)
-	{
+	public function GetInfoByID($id)    {
 		$id=DB::escape($id);
-		$sql = "SELECT * FROM loa WHERE pilotid='$id'";
+		$sql = "SELECT * FROM ".TABLE_PREFIX."loa WHERE pilotid='$id'";
 		$query = DB::get_results($sql);
 		return $query;
 	}
 
-	public function DeleteLoA ($id)
-	{
-			$id=DB::escape($id);
-		$sql   = "DELETE FROM loa WHERE pilotid='$id'";
+	public function DeleteLoA ($id) {
+                $id=DB::escape($id);
+		$sql   = "DELETE FROM ".TABLE_PREFIX."loa WHERE pilotid='$id'";
 		$query = mysql_query($sql);
 		return mysql_affected_rows();
 	}
-
 }
-
-
-
-
-
-
-
-

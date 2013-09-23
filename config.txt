@@ -1,0 +1,7 @@
+plugin=Leave Of Absence
+author=Sava Markovic
+email=zmaster97@gmail.com
+version=1.0
+published=4/1/2013
+license=Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License
+link=http://www.airserbiavirtual.com
